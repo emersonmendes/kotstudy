@@ -1,7 +1,7 @@
 package br.com.emersonmendes.kotstudy.service
 
 import br.com.emersonmendes.kotstudy.domain.Message
-import br.com.emersonmendes.kotstudy.repository.MessageRepositry
+import br.com.emersonmendes.kotstudy.repository.MessageRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
@@ -10,7 +10,7 @@ import java.util.*
 class MessageService {
 
     @Autowired
-    private lateinit var repository: MessageRepositry
+    private lateinit var repository: MessageRepository
 
     fun getMessages(): Iterable<Message> {
         return repository.findAll()
