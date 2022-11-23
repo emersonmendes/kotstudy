@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class MessageService {
+class MessageService(var repository: MessageRepository) {
 
-    @Autowired
-    private lateinit var repository: MessageRepository
+//    @Autowired
+//    private lateinit var repository: MessageRepository
 
     fun getMessages(): Iterable<Message> {
         return repository.findAll()
