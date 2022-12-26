@@ -4,8 +4,6 @@ fun main(args: Array<String>){
 
     readFile()
 
-
-
 }
 
 fun showHello(name: String, sureName: String){
