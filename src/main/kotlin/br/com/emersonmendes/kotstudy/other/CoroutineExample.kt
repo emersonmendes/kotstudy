@@ -11,6 +11,7 @@ suspend fun bathTime(){
     logger.info("Going to the bathroom")
     delay(5_000)
     logger.info("Bath done, exiting!")
+
 }
 
 suspend fun boilingWater(){
@@ -78,10 +79,12 @@ suspend fun prepareBreakfast(){
     }
 }
 
-suspend fun main(args: Array<String>) {
+ fun main(args: Array<String>) {
 //    concurrentMorningRoutine()
 //    sequentialMorningRoutine()
 //    morningRoutineWithCoffee()
+     runBlocking {
+         prepareBreakfast()
+     }
 
-    prepareBreakfast()
 }
