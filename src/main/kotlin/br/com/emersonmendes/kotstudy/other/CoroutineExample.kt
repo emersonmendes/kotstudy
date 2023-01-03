@@ -69,22 +69,25 @@ suspend fun toatingBread() : String {
     return "Toasted Bread"
 }
 
-suspend fun prepareBreakfast(){
-    coroutineScope {
-        val javaCoffee : Deferred<String> = async { makeJavaCoffee() }
-        val toastedBread : Deferred<String> = async {  toatingBread() }
-        val finalCoffee = javaCoffee.await()
-        val finalToast = toastedBread.await()
-        logger.info("I am eating $finalCoffee with $finalToast")
-    }
+suspend fun prepareBreakfast() = coroutineScope {
+    val javaCoffee : Deferred<String> = makeJavaCoffeAsync()
+    val toastedBread : Deferred<String> = async {  toatingBread() }
+    val finalCoffee = javaCoffee.await()
+    val finalToast = toastedBread.await()
+    logger.info("I am eating $finalCoffee with $finalToast")
 }
 
- fun main(args: Array<String>) {
+private fun makeJavaCoffeAsync() = coroutineScope {
+    return async { makeJavaCoffee() }
+
+}
+
+fun main(args: Array<String>) = runBlocking {
 //    concurrentMorningRoutine()
 //    sequentialMorningRoutine()
 //    morningRoutineWithCoffee()
-     runBlocking {
-         prepareBreakfast()
-     }
 
-}
+     prepareBreakfast()
+
+ }
+
