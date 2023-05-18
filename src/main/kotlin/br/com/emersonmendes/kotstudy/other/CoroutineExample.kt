@@ -70,16 +70,11 @@ suspend fun toatingBread() : String {
 }
 
 suspend fun prepareBreakfast() = coroutineScope {
-    val javaCoffee : Deferred<String> = makeJavaCoffeAsync()
+    val javaCoffee : Deferred<String> = async { makeJavaCoffee() }
     val toastedBread : Deferred<String> = async {  toatingBread() }
     val finalCoffee = javaCoffee.await()
     val finalToast = toastedBread.await()
     logger.info("I am eating $finalCoffee with $finalToast")
-}
-
-private fun makeJavaCoffeAsync() = coroutineScope {
-    return async { makeJavaCoffee() }
-
 }
 
 fun main(args: Array<String>) = runBlocking {
