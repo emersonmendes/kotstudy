@@ -1,8 +1,17 @@
+import br.com.emersonmendes.kotstudy.dto.Car
+
 fun main(args: Array<String>){
 
     showHello( "Emerson", sureName = "Mendes")
-
     readFile()
+
+    val carSet = sortedSetOf(
+        Car(2,"fusca", "blue"),
+        Car(20,"porsche", "yellow"),
+        Car(1, "ferrari", "red")
+    )
+
+    println(carSet)
 
 }
 
